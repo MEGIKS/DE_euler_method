@@ -29,7 +29,7 @@ func_t parse(const string &s) {
         unlink(tmpsource);
         return nullptr;
     }
-    void *lib = dlopen((string("./") + tmpshared).data(), RTLD_LAZY);
+    void *lib = dlopen((string("./") + tmpshared).data(), RTLD_NOW);
     func_t ans = reinterpret_cast<func_t>(dlsym(lib, "f"));
     unlink(tmpsource);
     unlink(tmpshared);

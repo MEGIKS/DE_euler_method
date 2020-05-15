@@ -5,6 +5,8 @@
 
 using func_t = double(*)(double, double);
 
-func_t parse(const std::string &s);
+extern "C" {
+    func_t parse(const std::string &s);
+}
 
 #endif
