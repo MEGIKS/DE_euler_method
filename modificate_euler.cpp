@@ -8,10 +8,10 @@ void modificate_euler(func_t f, int accur, int n, double h, double x0, double y0
     for (int i = 1; i < n; ++i) {
         double y_past = y;
         double x_past = x;
-        double x = x_past + h;
+        x = x_past + h;
         double f_past = f(x_past, y_past);
         double x_diff = x - x_past;
-        double y = y_past + x_diff * f_past;
+        y = y_past + x_diff * f_past;
         for (int j = 1; j <= accur; ++j) {
             y = y_past + (f_past + f(x, y)) / TWO * x_diff;
         }
