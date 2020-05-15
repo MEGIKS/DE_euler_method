@@ -5,6 +5,7 @@
 #include <cstring>
 #include <unistd.h>
 #include <dlfcn.h>
+#include <fstream>
 
 using namespace std;
 
@@ -13,13 +14,13 @@ void safe_write(int fd, const char *data, size_t len) {
     while ((writed += write(fd, data + writed, len - writed)) < len);
 }
 
-func_t parse(const string &s) {
+func_t parse(const char *s) {
     char tmpsource[] = "XXXXXX.c";
     int fd = mkstemps(tmpsource, 2);
     static char prefix[] = "#include <math.h>\ndouble f(double x, double y){return ";
     static char suffix[] = ";}\n";
     safe_write(fd, prefix, strlen(prefix));
-    safe_write(fd, s.data(), s.size());
+    safe_write(fd, s, strlen(s));
     safe_write(fd, suffix, strlen(suffix));
     close(fd);
     char tmpshared[] = "XXXXXX.so";

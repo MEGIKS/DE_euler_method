@@ -6,7 +6,7 @@
 using func_t = double(*)(double, double);
 
 extern "C" {
-    func_t parse(const std::string &s);
+    func_t parse(const char *s);
 }
 
 #endif
