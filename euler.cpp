@@ -7,7 +7,6 @@ void euler(func_t f, int n, double h, double x0, double y0, double *ans) {
         y += h * f(x, y);
         x += h;
         ans[i] = y;
-        break;
     }
 }
 

@@ -9,7 +9,11 @@
 using namespace std;
 
 int main() {
-    void *lib = dlopen("./main.so", RTLD_NOW);
-    void *p = dlsym(lib, "parse");
-    cout << p << "\n";
+    func_t f = parse("exp(x)");
+    double y[10];
+    euler(f, 10, 0.2, 0, 0, y);
+    for (auto x : y) {
+        cout << x << " ";
+    }
+    cout << "\n";
 }
