@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -Wall -O2 -std=c++17 -fpic -g
-objfiles= parser.o adams.o euler.o
+objfiles= parser.o adams.o euler.o modificate_euler.o
 
 demo: demo.o $(objfiles)
 	$(CXX) -o demo demo.o $(objfiles) -ldl
@@ -14,6 +14,7 @@ main.so: $(objfiles)
 parser.o: parser.hpp 
 euler.o: euler.hpp parser.hpp
 adams.o: adams.hpp parser.hpp
+modificate_euler.o: modificate_euler.hpp parser.hpp
 
 test:
 	./demo
